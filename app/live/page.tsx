@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-export default function Events() {
+export default function Live() {
   return (
     <div>
       <h1>
-        Events
+        Live
       </h1>
     </div>
   );
