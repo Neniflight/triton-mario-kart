@@ -1,129 +1,62 @@
-"use client";
-
-import React from "react";
-import Image from "next/image";
+"use client"
+import React, { useState } from 'react';
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import Image from 'next/image';
 
-interface NavbarProps {
-  variant?: "default" | "transparent";
+const navLinks = [
+    { label: "Events", href: '/events'},
+    { label: "Team", href: '/team'},
+    { label: "Join Us", href: '/join'},
+    { label: "Live", href: '/live'}
+];
+
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return(
+    <div>
+        <nav className="w-full px-7 py-2.5 left-0 top-0 bg-gradient-to-r from-(--blue) via-(--purple) to-(--maroon) inline-flex justify-between items-center">
+            <div className="w-full flex justify-between items-center">
+                <div className="self-stretch inline-flex justify-center items-center gap-[5px]">
+                    <Image src="/logo.png" alt='logo' width={24} height={24}/>
+                    <h3 className="text-(--white)">TRITON MARIO KART</h3>
+                </div>
+                <div className="hidden md:flex items-center">
+                    {navLinks.map((link, index) => (
+                        <div key={link.href} className="flex items-center">
+                            {index > 0 && (
+                                <div className="h-6 w-px mx-5 bg-(--transparent-white)" /> 
+                            )}
+                            <Link key={link.href} href={link.href}>   
+                                <h4 className="text-(--white)">{link.label}</h4>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+
+                <button className="md:hidden text-(--white)" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
+            </nav>
+            {isOpen && (
+                <div className="w-full flex flex-col items-start md:hidden gap-3 pt-2 py-4 bg-(--black)">
+                    {navLinks.map((link,index) => (
+                        <React.Fragment key={link.href}>
+                        {index > 0 && (
+                            <div
+                            className="w-full h-px bg-(--transparent-white)"
+                            />
+                        )}
+                        <Link href={link.href} onClick={() => setIsOpen(false)}>
+                            <h4 className="px-7 text-(--white)">{link.label}</h4>
+                        </Link>
+                        </React.Fragment>
+                    ))}
+                </div>
+            )}
+        </div>
+    )
 }
 
-export default function Navbar({ variant = "default" }: NavbarProps) {
-  const pathname = usePathname();
-
-  const getNavbarBackground = () => {
-    if (variant === "transparent") {
-      return "bg-transparent";
-    }
-    return "bg-gradient-to-r from-blue via-purple to-maroon";
-  };
-
-  const isActivePage = (href: string) => {
-    if (href === "/" && pathname === "/") return true;
-    if (href !== "/" && pathname.startsWith(href)) return true;
-    return false;
-  };
-
-  return (
-    <>
-      {/* Desktop Navbar */}
-      <nav
-        className={`hidden md:flex w-full px-7 py-2.5 justify-between items-center ${getNavbarBackground()}`}
-      >
-        <Link
-          href="/"
-          className="flex items-center gap-1 hover:opacity-80 transition-opacity"
-        >
-          <div className="relative w-7 h-10 flex items-center justify-center">
-            <Image
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/015c00b62d682caaf81ec8973e4356660b4ca435?width=57"
-              alt="Logo"
-              width={28}
-              height={38}
-              className="object-contain"
-            />
-          </div>
-          <span className="text-white font-barlow font-bold text-[32px] leading-normal">
-            TRITON MARIO KART
-          </span>
-        </Link>
-
-        <div className="flex items-center gap-6">
-          <Link href="/events" className="navbar-button">
-            <span
-              className={`navbar-button-text ${isActivePage("/events") ? "active" : ""}`}
-            >
-              Events
-            </span>
-            <div
-              className={`navbar-button-underline ${isActivePage("/events") ? "active" : ""}`}
-            ></div>
-          </Link>
-          <div className="navbar-separator"></div>
-
-          <Link href="/team" className="navbar-button">
-            <span
-              className={`navbar-button-text ${isActivePage("/team") ? "active" : ""}`}
-            >
-              Team
-            </span>
-            <div
-              className={`navbar-button-underline ${isActivePage("/team") ? "active" : ""}`}
-            ></div>
-          </Link>
-          <div className="navbar-separator"></div>
-
-          <Link href="/" className="navbar-button">
-            <span
-              className={`navbar-button-text ${isActivePage("/") && pathname === "/" ? "active" : ""}`}
-            >
-              Join Us
-            </span>
-            <div
-              className={`navbar-button-underline ${isActivePage("/") && pathname === "/" ? "active" : ""}`}
-            ></div>
-          </Link>
-          <div className="navbar-separator"></div>
-
-          <Link href="/live" className="navbar-button">
-            <span
-              className={`navbar-button-text ${isActivePage("/live") ? "active" : ""}`}
-            >
-              Watch Live
-            </span>
-            <div
-              className={`navbar-button-underline ${isActivePage("/live") ? "active" : ""}`}
-            ></div>
-          </Link>
-        </div>
-      </nav>
-
-      {/* Mobile Navbar */}
-      <nav
-        className={`md:hidden flex w-full max-w-[402px] mx-auto px-7 py-3 pt-12 justify-between items-center ${getNavbarBackground()}`}
-      >
-        <Link href="/" className="flex items-center gap-2">
-          <div className="relative w-6 h-8">
-            <Image
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9cac7da02ab2d50d608b3800220ec38cd9a511ff?width=45"
-              alt="Logo"
-              width={24}
-              height={32}
-              className="object-contain"
-            />
-          </div>
-          <span className="text-white font-barlow font-bold text-xl">
-            TRITON MARIO KART
-          </span>
-        </Link>
-
-        <div className="w-8 h-8 flex flex-col justify-center items-center gap-1.5 border border-white/50 rounded">
-          <div className="w-6 h-0.5 bg-white"></div>
-          <div className="w-6 h-0.5 bg-white"></div>
-          <div className="w-6 h-0.5 bg-white"></div>
-        </div>
-      </nav>
-    </>
-  );
-}
+export default Navbar;

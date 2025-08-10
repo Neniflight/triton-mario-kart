@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "./button";
 import { EventCard } from "./event_card";
@@ -149,25 +151,7 @@ export function EventsSection() {
       description: "This is the event description for this event",
       imageUrl:
         "https://cdn.builder.io/api/v1/image/assets/TEMP/df7c748c2682c77cf3ae899374035811cac88f60?width=600",
-    },
-    {
-      eventName: "Event Name",
-      date: "Date (Monday, 1/14/2025)",
-      time: "Time (9:00pm to 10:00pm)",
-      location: "Location",
-      description: "This is the event description for this event",
-      imageUrl:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/b0235b982c6f799ae7a95a27d2fae94fd5431d63?width=600",
-    },
-    {
-      eventName: "Event Name",
-      date: "Date (Monday, 1/14/2025)",
-      time: "Time (9:00pm to 10:00pm)",
-      location: "Location",
-      description: "This is the event description for this event",
-      imageUrl:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/ad33659c33381eac40061641b81f19d65a13ad9f?width=600",
-    },
+    }
   ];
 
   const CalendarIcon = () => (
@@ -183,6 +167,21 @@ export function EventsSection() {
         fill="white"
       />
     </svg>
+  );
+
+  const EventCard = ({ eventName, date, time, location, description, imageUrl }) => (
+    <div className="flex-shrink-0 scroll-snap-start bg-white rounded-lg p-4 w-64 shadow-lg">
+      <img
+        src={imageUrl}
+        alt={eventName}
+        className="w-full rounded-lg mb-3"
+      />
+      <h4 className="text-black font-bold text-lg mb-1">{eventName}</h4>
+      <p className="text-gray-600 text-sm mb-1">{date}</p>
+      <p className="text-gray-600 text-sm mb-1">{time}</p>
+      <p className="text-gray-600 text-sm mb-2">{location}</p>
+      <p className="text-gray-700 text-sm">{description}</p>
+    </div>
   );
 
   return (
@@ -207,24 +206,33 @@ export function EventsSection() {
         <span className="font-normal">below.</span>
       </div>
 
-      <div className="flex flex-col gap-4 p-4 shadow-lg rounded-lg">
-        <div className="flex gap-8 overflow-x-auto md:justify-center pb-4">
-          {events.map((event, index) => (
-            <EventCard key={index} {...event} />
-          ))}
-        </div>
-
-        <div className="w-full flex justify-center md:hidden">
-          <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
-        </div>
+      <div
+        className="flex gap-8 overflow-x-auto md:justify-center pb-4"
+        style={{
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+          paddingLeft: "1.5rem",        // increased padding for full visibility
+          paddingRight: "1.5rem",       // add right padding too!
+          scrollPaddingLeft: "1.5rem",  // help snapping on left edge
+          scrollPaddingRight: "1.5rem", // help snapping on right edge
+        }}
+      >
+        {events.map((event, index) => (
+          <EventCard key={index} {...event} />
+        ))}
       </div>
 
-      <Button
-        leftIcon={<CalendarIcon />}
-        className="self-start text-base md:text-2xl"
+      <div className="w-full flex justify-center md:hidden">
+        <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
+      </div>
+
+      <button
+        className="self-start text-base md:text-2xl flex items-center bg-transparent border-none text-white cursor-pointer"
+        type="button"
       >
-        VIEW EVENTS
-      </Button>
+        <CalendarIcon />
+        <span className="ml-2 font-bold">VIEW EVENTS</span>
+      </button>
     </section>
   );
 }
@@ -283,23 +291,152 @@ export function JoinTeamSection() {
   );
 }
 
+
+
+const YT_API_KEY = "AIzaSyBnw2yGy6EuxUthoEIltfAVQBxxlQNwZEA";
+
+const STREAMERS = [
+  {
+    name: "AstraMKW",
+    twitchChannel: "astramkw",
+    youtubeChannelId: "UC1grOYjzmftzT2DCWq0Mcog",
+    youtubeFallbackVideoId: "rGVOVMo-A9o",
+  },
+  {
+    name: "Collegiate Karting League",
+    twitchChannel: "collegiatekl",
+    youtubeChannelId: "UCNIAx4iPEWlMbb7TVeeM2Wg",
+    youtubeFallbackVideoId: "M3fqTkYY9LY",
+  },
+];
+
 export function WatchLiveSection() {
+  const [ytLiveStatus, setYtLiveStatus] = useState({});
+
+  useEffect(() => {
+    async function checkYouTubeLive(channelId, streamerKey) {
+      const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${YT_API_KEY}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const isLive = data.items && data.items.length > 0;
+        setYtLiveStatus((prev) => ({ ...prev, [streamerKey]: isLive }));
+      } catch (e) {
+        console.error("YouTube API error", e);
+      }
+    }
+
+    STREAMERS.forEach(({ youtubeChannelId, name }) => {
+      checkYouTubeLive(youtubeChannelId, name);
+    });
+  }, []);
+
   return (
     <section
-      className="flex flex-col gap-4 w-full px-4 md:px-25 py-12 pb-16 rounded-t-[18px] -mt-8 relative z-10"
+      className="flex flex-col gap-12 w-full px-4 md:px-25 py-12 pb-16 rounded-t-[18px] -mt-8 relative z-10"
       style={{
         background:
           "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 55.77%, #000 100%), linear-gradient(90deg, #4A4572 0%, #624A87 100%)",
       }}
     >
-      <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
+      <h3 className="text-white font-barlow font-bold text-xl md:text-3xl mb-6">
         WATCH US LIVE
       </h3>
 
-      <div className="flex items-center justify-center h-54 md:h-[697px] bg-[#4D4D4D] rounded-2xl">
-        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center px-4">
-          Triton Mario Kart Youtube / Twitch Channel
-        </h3>
+      {/* Twitch row */}
+      <div className="flex items-center gap-6">
+        {/* Twitch Logo */}
+        <div className="flex-shrink-0">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-purple-700"
+          >
+            <path
+              d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.142V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"
+              fill="#9146FF"
+            />
+          </svg>
+        </div>
+
+        {/* Twitch streams side-by-side */}
+        <div className="flex flex-1 gap-6">
+          {STREAMERS.map(({ name, twitchChannel }) => (
+            <div key={name} className="flex flex-col flex-1">
+              <h4 className="text-white font-bold text-2xl text-center">
+                {name}
+              </h4>
+              <div className="aspect-video rounded-2xl overflow-hidden border-4 border-purple-700">
+                <iframe
+                  src={`https://player.twitch.tv/?channel=${twitchChannel}&parent=triton-mario-kart.vercel.app`}
+                  height="100%"
+                  width="100%"
+                  allowFullScreen
+                  frameBorder="0"
+                  title={`${name} Twitch Stream`}
+                ></iframe>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* YouTube row */}
+      <div className="flex items-center gap-6">
+        {/* YouTube Logo */}
+        <div className="flex-shrink-0">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-red-600"
+          >
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              fill="#FF0000"
+            />
+          </svg>
+        </div>
+
+        {/* YouTube streams side-by-side */}
+        <div className="flex flex-1 gap-6">
+          {STREAMERS.map(({ name, youtubeChannelId, youtubeFallbackVideoId }) => {
+            const fallbackVideoId = youtubeFallbackVideoId;
+            return (
+              <div key={name} className="flex flex-col flex-1">
+                <h4 className="text-white font-bold text-2xl text-center">
+                  {name}
+                </h4>
+                <div className="aspect-video rounded-2xl border-4 border-red-700">
+                  {ytLiveStatus[name] ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}`}
+                      height="100%"
+                      width="100%"
+                      allowFullScreen
+                      frameBorder="0"
+                      title={`${name} YouTube Live Stream`}
+                    ></iframe>
+                  ) : (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${youtubeFallbackVideoId}`}
+                      height="100%"
+                      width="100%"
+                      allowFullScreen
+                      frameBorder="0"
+                      title={`${name} YouTube Fallback Video`}
+                    ></iframe>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
