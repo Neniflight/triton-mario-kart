@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="hidden md:flex w-full px-25 py-3 justify-between items-center border-t-2 border-white bg-black">
       <div className="flex flex-col gap-3">
