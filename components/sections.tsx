@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "./button";
@@ -182,6 +183,21 @@ export function EventsSection() {
     </svg>
   );
 
+  const EventCard = ({ eventName, date, time, location, description, imageUrl }) => (
+    <div className="flex-shrink-0 scroll-snap-start bg-white rounded-lg p-4 w-64 shadow-lg">
+      <img
+        src={imageUrl}
+        alt={eventName}
+        className="w-full rounded-lg mb-3"
+      />
+      <h4 className="text-black font-bold text-lg mb-1">{eventName}</h4>
+      <p className="text-gray-600 text-sm mb-1">{date}</p>
+      <p className="text-gray-600 text-sm mb-1">{time}</p>
+      <p className="text-gray-600 text-sm mb-2">{location}</p>
+      <p className="text-gray-700 text-sm">{description}</p>
+    </div>
+  );
+
   return (
     <section
       className="flex flex-col gap-4 w-full px-4 md:px-25 py-12 pb-16 rounded-t-[18px] -mt-8 relative z-10"
@@ -194,6 +210,13 @@ export function EventsSection() {
         ATTEND OUR EVENTS
         </h3>
 
+      <button
+        className="self-start text-base md:text-2xl flex items-center bg-transparent border-none text-white cursor-pointer"
+        type="button"
+      >
+        <CalendarIcon />
+        <span className="ml-2 font-bold">VIEW EVENTS</span>
+      </button>
         <div className="text-white font-brix text-sm md:text-base leading-4">
           <span className="font-normal">
             We regularly host events for those looking to meet up in-person and
@@ -204,6 +227,26 @@ export function EventsSection() {
           <span className="font-bold"> upcoming events </span>
           <span className="font-normal">below.</span>
         </div>
+        
+        <div
+        className="flex gap-8 overflow-x-auto md:justify-center pb-4"
+        style={{
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+          paddingLeft: "1.5rem",        // increased padding for full visibility
+          paddingRight: "1.5rem",       // add right padding too!
+          scrollPaddingLeft: "1.5rem",  // help snapping on left edge
+          scrollPaddingRight: "1.5rem", // help snapping on right edge
+        }}
+      >
+        {events.map((event, index) => (
+          <EventCard key={index} {...event} />
+        ))}
+      </div>
+
+      <div className="w-full flex justify-center md:hidden">
+        <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
+      </div>
 
         <div className="flex flex-col gap-4 p-4 shadow-lg rounded-lg">
           <div className="flex gap-8 overflow-x-auto md:justify-center pb-4">
@@ -215,15 +258,14 @@ export function EventsSection() {
           <div className="w-full flex justify-center md:hidden">
             <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
           </div>
+          <button
+            className="self-start text-base md:text-2xl flex items-center bg-transparent border-none text-white cursor-pointer"
+            type="button"
+          >
+            <CalendarIcon />
+            <span className="ml-2 font-bold">VIEW EVENTS</span>
+          </button>
         </div>
-
-        <Button
-          leftIcon={<CalendarIcon />}
-          className="self-start text-base md:text-2xl"
-        >
-          VIEW EVENTS
-        </Button>
-      </div>
     </section>
   );
 }
@@ -352,7 +394,6 @@ export function WatchLiveSection() {
             />
           </svg>
         </div>
-
         {/* Twitch streams side-by-side */}
         <div className="flex flex-1 gap-6">
           {STREAMERS.map(({ name, twitchChannel }) => (
@@ -393,7 +434,6 @@ export function WatchLiveSection() {
             />
           </svg>
         </div>
-
         {/* YouTube streams side-by-side */}
         <div className="flex flex-1 gap-6">
           {STREAMERS.map(({ name, youtubeChannelId, youtubeFallbackVideoId }) => {
@@ -416,6 +456,7 @@ export function WatchLiveSection() {
                   ) : (
                     <iframe
                       src={`https://www.youtube.com/embed/${fallbackVideoId}`}
+
                       height="100%"
                       width="100%"
                       allowFullScreen

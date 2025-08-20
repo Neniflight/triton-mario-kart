@@ -39,7 +39,7 @@ const Navbar = () => {
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
-            </nav>
+        </nav>
             <>
                 {isOpen && (
                     <div
