@@ -67,7 +67,6 @@ const Navbar = () => {
                     </React.Fragment>
                     ))}
                 </div>
-            </>
         </div>
     )
 }
