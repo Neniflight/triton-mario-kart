@@ -17,50 +17,67 @@ export function HeroSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex flex-col items-start gap-4 w-full max-w-sm md:max-w-none md:flex-row md:justify-end md:mb-4">
-        <Image
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0978fba81573db99c707bac0fc88c4317ba0d676?width=199"
-          alt="Mario character"
-          width={100}
-          height={77}
-          className="w-24 h-auto md:hidden"
-        />
-        <Image
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0978fba81573db99c707bac0fc88c4317ba0d676?width=199"
-          alt="Mario character"
-          width={100}
-          height={77}
-          className="hidden md:block w-24 h-auto"
-        />
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center gap-5 md:gap-8 w-full max-w-sm md:max-w-none md:justify-center">
-        <div className="relative w-56 h-72 md:w-60 md:h-80">
-          <Image
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ad33659c33381eac40061641b81f19d65a13ad9f?width=479"
-            alt="Triton Mario Kart Logo"
-            fill
-            className="object-contain"
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto">
+        <div className="relative w-full h-20 overflow-hidden">
+          <img 
+            src="/kart_moving.svg"
+            alt="Kart Moving"
+            className="animate-move"
           />
         </div>
+      {/* <div className="flex flex-col items-start gap-4 w-full max-w-sm md:max-w-none md:flex-row md:justify-end md:mb-4">
+        <Image
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0978fba81573db99c707bac0fc88c4317ba0d676?width=199"
+          alt="Mario character"
+          width={100}
+          height={77}
+          className="w-24 h-auto md:hidden"
+        />
+        <Image
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0978fba81573db99c707bac0fc88c4317ba0d676?width=199"
+          alt="Mario character"
+          width={100}
+          height={77}
+          className="hidden md:block w-24 h-auto"
+        />
+      </div> */}
 
-        <div className="flex flex-col items-center md:items-start gap-3">
-          <h1
-            className="text-white font-barlow font-bold text-4xl md:text-8xl text-center md:text-left leading-tight"
-            style={{
-              textShadow:
-                "0px 0px 39.262px #636363, 0px 0px 22.435px #636363, 0px 0px 13.087px #636363, 0px 0px 6.544px #636363, 0px 0px 1.87px #636363, 0px 0px 0.935px #636363",
-            }}
-          >
-            WELCOME TO TRITON MARIO KART
-          </h1>
-          <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center md:text-left">
-            UC San Diego's Mario Kart 8 Deluxe Team
-          </h3>
+        <div className="flex flex-col md:flex-row items-center gap-5 md:gap-8 w-full max-w-sm md:max-w-none md:justify-left">
+          <div className="relative w-56 h-72 md:w-60 md:h-80">
+            <Image
+              src="/logo.svg"
+              alt="Triton Mario Kart Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <h2
+              className="text-white"
+              style={{
+                textShadow:
+                  "0px 0px 39.262px #636363, 0px 0px 22.435px #636363, 0px 0px 13.087px #636363, 0px 0px 6.544px #636363, 0px 0px 1.87px #636363, 0px 0px 0.935px #636363",
+              }}
+            >
+              WELCOME TO
+            </h2>
+            <h1
+              className="text-white"
+              style={{
+                textShadow:
+                  "0px 0px 39.262px #636363, 0px 0px 22.435px #636363, 0px 0px 13.087px #636363, 0px 0px 6.544px #636363, 0px 0px 1.87px #636363, 0px 0px 0.935px #636363",
+              }}
+            >
+              TRITON MARIO KART
+            </h1>
+            <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center md:text-left">
+              UC San Diego's Mario Kart 8 Deluxe Team
+            </h3>
+          </div>
         </div>
       </div>
-
-      <div className="flex justify-end w-full max-w-sm md:max-w-none mt-4 md:mt-8">
+      {/* <div className="flex justify-end w-full max-w-sm md:max-w-none mt-4 md:mt-8">
         <Image
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/161ff07f4f1cea44dfc0b8f809068686560b995f?width=199"
           alt="Mario character"
@@ -75,19 +92,18 @@ export function HeroSection() {
           height={77}
           className="hidden md:block w-24 h-auto"
         />
-      </div>
+      </div> */}
     </section>
   );
 }
 
 export function AboutSection() {
   return (
-    <section className="flex flex-col gap-4 w-full px-4 md:px-25 py-12 pb-16 bg-white rounded-t-[18px] -mt-8 relative z-10">
-      <h3 className="text-black font-barlow font-bold text-xl md:text-3xl">
+    <section className="flex flex-col w-full px-4 md:px-25 py-12 pb-16 bg-white rounded-t-[18px] -mt-8 relative z-10">
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5">
+        <h3>
         ABOUT TRITON MARIO KART
-      </h3>
-
-      <div className="text-black font-brix text-sm md:text-base leading-4 md:leading-4 space-y-4">
+        </h3>
         <p>
           Founded in 2023, Triton Mario Kart is UC San Diego's very own Mario
           Kart 8 Deluxe club and competitive organization.
@@ -99,23 +115,22 @@ export function AboutSection() {
           League tournament. We have performed well in other events, such as 4v4
           NRC and other seasons of Collegiate Karting League.
         </p>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center justify-center gap-5 mt-4">
-        <Image
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/710270632278e6b477fa042943edac39131c4fc2?width=900"
-          alt="Tournament image 1"
-          width={450}
-          height={150}
-          className="w-full md:w-[450px] h-auto rounded-lg"
-        />
-        <Image
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/81b515d0f8dd484fca84d83119008c886d2d6404?width=1200"
-          alt="Tournament image 2"
-          width={600}
-          height={150}
-          className="w-full md:w-[600px] h-auto rounded-lg"
-        />
+        <div className="flex flex-col md:flex-row items-stretch justify-center gap-5 mt-4">
+          <Image
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/710270632278e6b477fa042943edac39131c4fc2?width=900"
+            alt="Tournament image 1"
+            width={450}
+            height={150}
+            className="w-full md:w-1/2 h-auto object-contain rounded-lg"
+          />
+          <Image
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/81b515d0f8dd484fca84d83119008c886d2d6404?width=1200"
+            alt="Tournament image 2"
+            width={600}
+            height={150}
+            className="w-full md:w-1/2 h-auto object-contain rounded-lg"
+          />
+        </div>
       </div>
     </section>
   );
@@ -192,39 +207,41 @@ export function EventsSection() {
         background: `url('https://cdn.builder.io/api/v1/image/assets/TEMP/34d44b3d07bea9053ca541a4bf126addf7270441?width=2880') lightgray 50% / cover no-repeat, linear-gradient(90deg, #52A8E2 0%, #1487D4 100%)`,
       }}
     >
-      <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5">
+        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
         ATTEND OUR EVENTS
-      </h3>
+        </h3>
 
-      <div className="text-white font-brix text-sm md:text-base leading-4">
-        <span className="font-normal">
-          We regularly host events for those looking to meet up in-person and
-          get to play some Mario Kart, we also often host social events & trips
-          between team members! Check out our public events below! Here are some
-          of our
-        </span>
-        <span className="font-bold"> upcoming events </span>
-        <span className="font-normal">below.</span>
-      </div>
-
-      <div className="flex flex-col gap-4 p-4 shadow-lg rounded-lg">
-        <div className="flex gap-8 overflow-x-auto md:justify-center pb-4">
-          {events.map((event, index) => (
-            <EventCard key={index} {...event} />
-          ))}
+        <div className="text-white font-brix text-sm md:text-base leading-4">
+          <span className="font-normal">
+            We regularly host events for those looking to meet up in-person and
+            get to play some Mario Kart, we also often host social events & trips
+            between team members! Check out our public events below! Here are some
+            of our
+          </span>
+          <span className="font-bold"> upcoming events </span>
+          <span className="font-normal">below.</span>
         </div>
 
-        <div className="w-full flex justify-center md:hidden">
-          <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
-        </div>
-      </div>
+        <div className="flex flex-col gap-4 p-4 shadow-lg rounded-lg">
+          <div className="flex gap-8 overflow-x-auto md:justify-center pb-4">
+            {events.map((event, index) => (
+              <EventCard key={index} {...event} />
+            ))}
+          </div>
 
-      <Button
-        leftIcon={<CalendarIcon />}
-        className="self-start text-base md:text-2xl"
-      >
-        VIEW EVENTS
-      </Button>
+          <div className="w-full flex justify-center md:hidden">
+            <div className="w-48 h-2.5 bg-grey rounded-2xl"></div>
+          </div>
+        </div>
+
+        <Button
+          leftIcon={<CalendarIcon />}
+          className="self-start text-base md:text-2xl"
+        >
+          VIEW EVENTS
+        </Button>
+      </div>
     </section>
   );
 }
@@ -262,22 +279,24 @@ export function JoinTeamSection() {
 
   return (
     <section className="flex flex-col gap-4 w-full px-4 md:px-25 py-12 pb-16 bg-gradient-to-r from-[#754162] to-maroon rounded-t-[18px] -mt-8 relative z-10">
-      <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5">
+        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
         JOIN THE TEAM
-      </h3>
+        </h3>
+        
+        <p className="text-white font-brix text-sm md:text-base leading-4">
+          Want to be part of the team? Learn mor or apply to be part of it below.
+          Don't worry, we have something for everyone regardless of skill level!
+        </p>
 
-      <p className="text-white font-brix text-sm md:text-base leading-4">
-        Want to be part of the team? Learn mor or apply to be part of it below.
-        Don't worry, we have something for everyone regardless of skill level!
-      </p>
-
-      <div className="flex gap-3">
-        <Button leftIcon={<InfoIcon />} className="text-base md:text-2xl">
-          LEARN MORE
-        </Button>
-        <Button leftIcon={<CheckIcon />} className="text-base md:text-2xl">
-          JOIN US
-        </Button>
+        <div className="flex gap-3">
+          <Button leftIcon={<InfoIcon />} className="text-base md:text-2xl">
+            LEARN MORE
+          </Button>
+          <Button leftIcon={<CheckIcon />} className="text-base md:text-2xl">
+            JOIN US
+          </Button>
+        </div>
       </div>
     </section>
   );
@@ -292,14 +311,16 @@ export function WatchLiveSection() {
           "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 55.77%, #000 100%), linear-gradient(90deg, #4A4572 0%, #624A87 100%)",
       }}
     >
-      <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
-        WATCH US LIVE
-      </h3>
-
-      <div className="flex items-center justify-center h-54 md:h-[697px] bg-[#4D4D4D] rounded-2xl">
-        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center px-4">
-          Triton Mario Kart Youtube / Twitch Channel
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5">
+        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
+          WATCH US LIVE
         </h3>
+
+        <div className="flex items-center justify-center h-54 md:h-[697px] bg-[#4D4D4D] rounded-2xl">
+          <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center px-4">
+            Triton Mario Kart Youtube / Twitch Channel
+          </h3>
+        </div>
       </div>
     </section>
   );

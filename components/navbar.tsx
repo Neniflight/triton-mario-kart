@@ -15,7 +15,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     return(
     <div>
-        <nav className="w-full px-7 py-2.5 left-0 top-0 bg-gradient-to-r from-(--blue) via-(--purple) to-(--maroon) inline-flex justify-between items-center">
+        <nav className="fixed top-0 left-0 z-51 w-full px-7 py-2.5 left-0 top-0 bg-gradient-to-r from-(--blue) via-(--purple) to-(--maroon) inline-flex justify-between items-center">
             <div className="w-full flex justify-between items-center">
                 <div className="self-stretch inline-flex justify-center items-center gap-[5px]">
                     <Image src="/logo.png" alt='logo' width={24} height={24}/>
@@ -27,8 +27,9 @@ const Navbar = () => {
                             {index > 0 && (
                                 <div className="h-6 w-px mx-5 bg-(--transparent-white)" /> 
                             )}
-                            <Link key={link.href} href={link.href}>   
+                            <Link key={link.href} href={link.href} className={"relative group"}>   
                                 <h4 className="text-(--white)">{link.label}</h4>
+                                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-(--white) transition-all duration-300 ease-in-out group-hover:w-full"></span>
                             </Link>
                         </div>
                     ))}
@@ -39,22 +40,34 @@ const Navbar = () => {
                 </button>
             </div>
             </nav>
-            {isOpen && (
-                <div className="w-full flex flex-col items-start md:hidden gap-3 pt-2 py-4 bg-(--black)">
-                    {navLinks.map((link,index) => (
-                        <React.Fragment key={link.href}>
+            <>
+                {isOpen && (
+                    <div
+                    className="fixed inset-0 bg-black/90 z-49"
+                    onClick={() => setIsOpen(false)}
+                    ></div>
+                )}
+
+                <div
+                    className={`
+                    fixed left-0 w-full z-50 flex flex-col items-start md:hidden gap-3
+                    pt-2 py-4 bg-(--black) transition-transform duration-300 ease-in-out
+                    top-13
+                    ${isOpen ? "translate-y-0" : "-translate-y-full"}
+                    `}
+                >
+                    {navLinks.map((link, index) => (
+                    <React.Fragment key={link.href}>
                         {index > 0 && (
-                            <div
-                            className="w-full h-px bg-(--transparent-white)"
-                            />
+                        <div className="w-full h-px bg-(--transparent-white)" />
                         )}
                         <Link href={link.href} onClick={() => setIsOpen(false)}>
-                            <h4 className="px-7 text-(--white)">{link.label}</h4>
+                        <h4 className="px-7 text-(--white)">{link.label}</h4>
                         </Link>
-                        </React.Fragment>
+                    </React.Fragment>
                     ))}
                 </div>
-            )}
+            </>
         </div>
     )
 }
