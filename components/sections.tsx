@@ -18,7 +18,13 @@ export function HeroSection() {
       }}
     >
       <div className="flex flex-col w-full max-w-[1440px] mx-auto">
-
+        <div className="relative w-full h-20 overflow-hidden">
+          <img 
+            src="/kart_moving.svg"
+            alt="Kart Moving"
+            className="animate-move"
+          />
+        </div>
       {/* <div className="flex flex-col items-start gap-4 w-full max-w-sm md:max-w-none md:flex-row md:justify-end md:mb-4">
         <Image
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/0978fba81573db99c707bac0fc88c4317ba0d676?width=199"

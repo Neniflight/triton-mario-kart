@@ -14,6 +14,22 @@
 @theme inline {
   --font-barlow: var(--font-barlow);
   --font-brix: var(--font-brix);
+
+  --animate-move: move 4s ease-in-out forwards;
+  @keyframes move {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    75% {
+      transform: translateX(75vw);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(75vw);
+      opacity: 0;
+    }
+  }
 }
 
 /* Corresponds to Large Title  */
@@ -92,7 +108,7 @@ p {
   }
 
   p {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .caption {
