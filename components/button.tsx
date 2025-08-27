@@ -3,8 +3,8 @@ import Link from "next/link";
 
 interface ButtonProps {
   children: React.ReactNode;
-  leftIcon?: ReactElement;
-  rightIcon?: ReactElement;
+  leftIcon?: ReactElement<{ className?: string }>;
+  rightIcon?: ReactElement<{ className?: string }>;
   variant?: "default" | "maroon" | "blue";
   href: string;
   onClick?: () => void;
@@ -42,7 +42,7 @@ export function Button({
         <span>{children}</span>
         {rightIcon && (
           <span className="w-5 h-5 flex items-center justify-center text-inherit">
-            {React.cloneElement(leftIcon, {
+            {React.cloneElement(rightIcon, {
               className: "w-full h-full stroke-current",
             })}
           </span>
