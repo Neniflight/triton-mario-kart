@@ -19,7 +19,7 @@ export function EventCard({
   imageUrl,
 }: EventCardProps) {
   return (
-    <div className="flex flex-col w-[300px] min-w-[300px]">
+    <div className="flex flex-col w-[300px] min-w-[300px] shadow-lg">
       <div className="relative h-[225px] rounded-t-2xl overflow-hidden">
         <Image src={imageUrl} alt={eventName} fill className="object-cover" />
       </div>
