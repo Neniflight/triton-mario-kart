@@ -32,6 +32,26 @@
   }
 }
 
+/* Chrome, Safari, Edge */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px; /* height since it’s horizontal */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 9999px;
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+}
+
 /* Corresponds to Large Title  */
 h1 {
   font-family: var(--font-barlow);
