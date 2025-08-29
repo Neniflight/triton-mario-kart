@@ -19,7 +19,7 @@ const Navbar = () => {
             <div className="w-full flex justify-between items-center max-w-[1440px] mx-auto">
                 <Link href={"/"}>
                     <div className="self-stretch inline-flex justify-center items-center gap-[5px]">
-                        <Image src="/logo.png" alt='logo' width={24} height={24}/>
+                        <Image src="/logo.svg" alt='logo' width={24} height={24}/>
                         <h3 className="text-(--white)">TRITON MARIO KART</h3>
                     </div>
                 </Link>

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.builder.io",
         port: "",
-        pathname: "/api/v1/image/assets/**",
+        pathname: "/**",
       },
     ],
   },
