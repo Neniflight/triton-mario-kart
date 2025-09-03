@@ -49,17 +49,11 @@ export default function WatchLive() {
       </div>
 
       {/* Main Content */}
-      <main
-        className="flex flex-col gap-12 w-full px-4 md:px-25 py-12 pb-16 min-h-screen"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 55.77%, #000 100%), linear-gradient(90deg, #4A4572 0%, #624A87 100%)",
-        }}
-      >
-        <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5 pt-24 md:pt-8">
-          <h1 className="text-white font-barlow font-bold text-lg md:text-2xl mb-3">
-            WATCH US LIVE
-          </h1>
+      <main className="flex flex-col gap-12 w-full px-4 md:px-25 py-12 pb-16 min-h-screen bg-black">
+        <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5 pt-80 md:pt-14">
+          <div className="events-page-header">
+            <h1 className="page-title">WATCH US LIVE</h1>
+          </div>
 
           {/* Twitch row */}
           <div className="flex items-center gap-6 flex-col md:flex-row">

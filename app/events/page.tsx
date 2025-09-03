@@ -5,12 +5,11 @@ import EventCardCarousel from "@/components/event_card_carousel";
 
 // Event images from your uploads
 const eventImages = [
-  "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F8f8cb2dd662e4f6f8e9d643e15e27a1d?format=webp&width=800",
-  "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2Fad8a3d378b8541008b85d42ff19f288b?format=webp&width=800",
-  "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F4f0ecc66c9734a7e8acbf9ca40747aff?format=webp&width=800",
-  "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F8b1e2cda287e433da02bcdd5cb0a11db?format=webp&width=800",
-  "https://cdn.builder.io/o/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F83920ccc151e4bc7b05f7057be312bfe?alt=media&token=1e665924-7192-4542-a05f-d48ec70fdd02&apiKey=623f7a24a62e46689241a5fa06b42cb4",
-];
+  "/images/events_1.jpg",
+  "/images/events_2.jpg",
+  "/images/events_3.jpg",
+  "/images/events_4.jpg",
+]
 
 // Sample upcoming events
 const upcomingEvents = [
@@ -59,7 +58,7 @@ const pastEvents = [
     location: "PC East Ballroom",
     description:
       "Our biggest tournament of the fall quarter with amazing matches!",
-    image: eventImages[4],
+    image: eventImages[3],
   },
   {
     name: "Holiday Party Tournament",

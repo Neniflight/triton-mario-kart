@@ -502,6 +502,62 @@ p {
   text-align: center;
 }
 
+/* Join Page Styles */
+.join-page {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background: #000;
+  min-height: 100vh;
+}
+
+.join-page-header {
+  align-self: stretch;
+  text-align: center;
+}
+
+.join-sections-container {
+  display: grid;
+  max-width: 1440px;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .join-sections-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Full width row inside join grid */
+.join-full-row {
+  grid-column: 1 / -1;
+}
+
+.join-section {
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 18px;
+}
+
+.discord-section {
+  background: linear-gradient(90deg, #52a8e2 0%, #1487d4 100%);
+}
+
+.form-section {
+  background: linear-gradient(90deg, #754162 0%, #c8406c 100%);
+}
+
 .events-sections-container {
   display: flex;
   max-width: 1440px;

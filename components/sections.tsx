@@ -58,7 +58,7 @@ export function HeroSection() {
               TRITON MARIO KART
             </h1>
             <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center md:text-left">
-              UC San Diego's Mario Kart 8 Deluxe Team
+              UC San Diego's Mario Kart Team
             </h3>
           </div>
         </div>
@@ -83,7 +83,7 @@ export function AboutSection() {
         </h3>
         <p>
           Founded in 2023, Triton Mario Kart is UC San Diego's very own Mario
-          Kart 8 Deluxe club and competitive organization.
+          Kart club and competitive organization.
         </p>
         <p>
           The Triton Mario Kart competitive teams currently consist of two sub
@@ -194,27 +194,68 @@ export function EventsSection() {
   );
 }
 
+const DISCORD_URL = "https://discord.gg/NTNk9zygxf";
+const FORM_URL = "https://forms.gle/JZwN9wgDWuH8gYEUA";
+
 export function JoinTeamSection() {
-
   return (
-    <section className="flex flex-col gap-4 w-full px-4 md:px-25 py-12 pb-16 bg-gradient-to-r from-[#754162] to-(--maroon) rounded-t-[18px] -mt-8 relative z-10">
-      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-5">
-        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">
-        JOIN THE TEAM
-        </h3>
-        
-        <p className="text-white font-brix text-sm md:text-base leading-4">
-          Want to be part of the team? Learn mor or apply to be part of it below.
-          Don't worry, we have something for everyone regardless of skill level!
-        </p>
+    <section className="flex flex-col w-full px-4 md:px-25 py-12 pb-16 bg-gradient-to-r from-[#754162] to-(--maroon) rounded-t-[18px] -mt-8 relative z-10">
+      <div className="flex flex-col w-full max-w-[1440px] mx-auto gap-6">
+        <h3 className="text-white font-barlow font-bold text-xl md:text-3xl">JOIN US</h3>
 
-        <div className="flex gap-3">
-          <Button leftIcon={<Info />} href="/team" variant='maroon' className="text-base md:text-2xl">
-            LEARN MORE
-          </Button>
-          <Button leftIcon={<Check />} href="/" variant='maroon' className="text-base md:text-2xl">
-            JOIN US
-          </Button>
+        <div className="join-sections-container">
+          {/* Discord Section */}
+          <div className="join-section border-5 border-white/40">
+            <div className="events-section-header">
+              <div className="flex items-center gap-3">
+                <h2 className="section-title">DISCORD</h2>
+                <Image src="/images/discord-white-icon.png" alt="Discord logo" width={28} height={28} />
+              </div>
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-2xl border-2 border-white/60 bg-black/50 hover:bg-black/70 transition-colors p-6 flex flex-col justify-between min-h-[180px]"
+              >
+                <div>
+                  <h5 className="text-white/80">
+                    In the Triton Mario Kart Discord, members regularly chat, plan meetups, and play Mario Kart together whether for fun or competitively. If these interest you, join today!
+                  </h5>
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-black font-barlow font-bold bg-white rounded-full px-4 py-2 w-fit group-hover:bg-grey">
+                  <span>Open Discord</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Interest Form Section */}
+          <div className="join-section border-5 border-white/40">
+            <div className="events-section-header">
+              <h2 className="section-title">INTEREST FORM</h2>
+              <a
+                href={FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-2xl border-2 border-white/60 bg-black/50 hover:bg-black/70 transition-colors p-6 flex flex-col justify-between min-h-[180px]"
+              >
+                <div>
+                  <h5 className="text-white/80">
+                    For Fall 2025, both Mario Kart 8 Deluxe and Mario Kart World are supported by the Collegiate Karting League. With this in mind, feel free to let us know on the attached form any interest in playing for UCSD's competitive teams, or if you want to play the game casually. All skill levels are welcome!
+                  </h5>
+                </div>
+                <div className="mt-6 inline-flex items-center gap-2 text-black font-barlow font-bold bg-white rounded-full px-4 py-2 w-fit group-hover:bg-grey">
+                  <span>Open Form</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
