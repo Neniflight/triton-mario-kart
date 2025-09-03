@@ -74,7 +74,7 @@ export function HeroSection() {
               TRITON MARIO KART
             </h1>
             <h3 className="text-white font-barlow font-bold text-xl md:text-3xl text-center md:text-left">
-              UC San Diego's Mario Kart 8 Deluxe Team
+              UC San Diego's Mario Kart Team
             </h3>
           </div>
         </div>
@@ -115,7 +115,7 @@ export function AboutSection() {
         </h3>
         <p>
           Founded in 2023, Triton Mario Kart is UC San Diego's very own Mario
-          Kart 8 Deluxe club and competitive organization.
+          Kart club and competitive organization.
         </p>
         <p>
           The Triton Mario Kart competitive teams currently consist of two sub
@@ -330,7 +330,7 @@ export function JoinTeamSection() {
 
         <div className="join-sections-container">
           {/* Discord Section */}
-          <div className="join-section discord-section">
+          <div className="join-section border-5 border-white/40">
             <div className="events-section-header">
               <div className="flex items-center gap-3">
                 <h2 className="section-title">DISCORD</h2>
@@ -358,7 +358,7 @@ export function JoinTeamSection() {
           </div>
 
           {/* Interest Form Section */}
-          <div className="join-section discord-section">
+          <div className="join-section border-5 border-white/40">
             <div className="events-section-header">
               <h2 className="section-title">INTEREST FORM</h2>
               <a
