@@ -11,7 +11,7 @@ const ucsd1Members = [
     year: "'25",
     quarter: "Spring",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2Fb54b20b6d2fa47d08644bce6e109d127?format=webp&width=800",
+      "/mii/flight_mii.png",
   },
   {
     name: "Walouise",
@@ -21,7 +21,7 @@ const ucsd1Members = [
     year: "'25",
     quarter: "Spring",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2Ffa4a81ced0a548428aee26ecf4e6ad3f?format=webp&width=800",
+      "/mii/wal_mii.png",
   },
   {
     name: "Tophatbear",
@@ -30,7 +30,7 @@ const ucsd1Members = [
     year: "'26",
     quarter: "Spring",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F5367697d35e94ac3b64456df7f66efaa?format=webp&width=800",
+      "/mii/top_mii.png",
   },
   {
     name: "Astra",
@@ -39,7 +39,7 @@ const ucsd1Members = [
     year: "'26",
     quarter: "Spring",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F6ede4c3a217641d885050ee75041156c?format=webp&width=800",
+      "/mii/astra_mii.png",
   },
 ];
 
@@ -51,7 +51,7 @@ const ucsd2Members = [
     year: "'25",
     quarter: "Spring",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F2abcb56b93fa44f4acd74942c5250a26?format=webp&width=800",
+      "/mii/iba_mii.png",
   },
 ];
 
@@ -64,7 +64,7 @@ const alumniMembers = [
     year: "'24",
     quarter: "Fall",
     image:
-      "https://cdn.builder.io/o/assets%2F623f7a24a62e46689241a5fa06b42cb4%2F964d1a6af07e4899a34e3d74299238f1?alt=media&token=4b1e50c8-5d59-4d6a-aa4c-8cf6be0eed28&apiKey=623f7a24a62e46689241a5fa06b42cb4",
+      "/mii/super_mii.png",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function Team() {
       </div>
 
       {/* Main Content */}
-      <main className="team-page">
+      <main className="team-page py-4">
         <div className="team-page-header">
           <h1 className="page-title">TEAM</h1>
         </div>
@@ -116,9 +116,7 @@ export default function Team() {
       </main>
 
       {/* Footer */}
-      <div className="hidden md:block">
-        <Footer />
-      </div>
+      <Footer />
 
       {/* Mobile Navbar */}
       <div className="block md:hidden">

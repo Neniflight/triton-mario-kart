@@ -455,6 +455,7 @@ p {
 @media (max-width: 768px) {
   .team-page {
     padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .page-title {
